@@ -1,22 +1,35 @@
 from django.http import HttpResponse
 from django.template import loader
-
-from mpl_toolkits.mplot3d import Axes3D
-from sklearn.preprocessing import StandardScaler
-import matplotlib.pyplot as plt
-import numpy as np
+import plotly.express as px
 import pandas as pd
-import seaborn as snb
-from sklearn.preprocessing import LabelEncoder
 
 def index(request):
     template=loader.get_template('template0.html')
     df= pd.read_csv('diabetic_data.csv', delimiter=',')
     nRow, nCol = df.shape
-    fig=plt.figure(figsize=(16,8))
-    corr_matrix = df.corr()
-    snb.heatmap(corr_matrix)
-    plot_html=fig.to_html(full_html=False,default_height=500)
-    context={'leprint':f'There are {nRow} rows and {nCol} columns',
-    'plot_html':plot_html}
+    
+    number_medication=pd.DataFrame(df["num_medications"]).groupby("num_medications")["num_medications"].count()
+    bar = px.bar(number_medication)
+    bar_html=bar.to_html(full_html=False,default_height=500,default_width=700)
+    
+    time_in_hospital=pd.DataFrame(df["time_in_hospital"]).groupby("time_in_hospital")["time_in_hospital"].count()
+    pie = px.pie(time_in_hospital)
+    pie_html=pie.to_html(full_html=False,default_height=500,default_width=700)
+    
+    
+    
+    context={'leprint':f'The dataframe contains {nRow} rows and {nCol} columns',
+    'bar_html':bar_html,
+    'pie_html':pie_html,
+    }
+    
     return HttpResponse(template.render(context,request))
+    
+    
+    
+
+def Table(request):
+    df= pd.read_csv('diabetic_data.csv', delimiter=',')
+    geeks_object = df.head().to_html()
+
+    return HttpResponse(geeks_object)
