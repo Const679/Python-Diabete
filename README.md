@@ -8,13 +8,13 @@ Membres : Nicolas FERRARA, Arnaud DE BRITO, Constance LE FOURN
 
 
 Steps :
- - Cleaning
+ - Cleaning / Preprocessing
  - Scikit Learn
  - Visualization
  - Django
  - Power Point
 
-Applied models:
+Applied models (on the 05/12/2022):
  - Logistic regression : 0.584747
  - Linear discriminant analysis :0.585365
  - K Neighbors Classifier :0.0.800545
