@@ -7,21 +7,27 @@ https://archive.ics.uci.edu/ml/datasets/Diabetes+130-US+hospitals+for+years+1999
 Membres : Nicolas FERRARA, Arnaud DE BRITO, Constance LE FOURN
 
 
-Etapes :
- - Nettoyage
- - 
+Steps :
+ - Cleaning
  - Scikit Learn
- - Visualisation
+ - Visualization
  - Django
  - Power Point
 
-Models appliqués:
- - Logistic regression : 0.614683
- - LDA:0.611304
- - KNN:0.572153
- - CART:0.561086
-NB:0.583022
- - RandomForestClassifier : 0.631382
- - XGBoost:0.641474
-ADA:0.632600
-MLPC:0.535818
+Applied models:
+ - Logistic regression : 0.584747
+ - Linear discriminant analysis :0.585365
+ - K Neighbors Classifier :0.0.800545
+ - Decision tree classifier : 0.893246
+ - Gaussian NB:0.502700
+ - RandomForestClassifier : 0.951659
+ - XGBoost:0.950623
+ - ADA boost classifier:0.882629
+ - MLP Classifier:0.500882
+
+Conclusion :
+
+XGBoost and Random forest are the best models.
+Grid Search is not a perfect fit, XGBoost might be a better one with an accuracy of 0.949 and a precision of 0.999, instead of an accuracy of 0.946 and a precision of 0.996 for the Random Forest.
+You can see the conclusion table at the end of the Final_project.ipynb.
+XGBoost allows us to predict the readmission of a patient depending on the drugs, age and admission with an accuracy of 94,9%.
